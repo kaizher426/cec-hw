@@ -3,8 +3,8 @@
 #define LED_PIN3 3
 
 // defining the pins
-const int trigPin = 10;
-const int echoPin = 11;
+const int trigPin = 11;
+const int echoPin = 10;
 
 // defining variables
 long duration;
