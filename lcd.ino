@@ -55,7 +55,7 @@ void loop() {
       lcd.print("yo!");
       delay(1000);
     }
-    else if(counter >= 50{
+    else if(counter >= 50){
       lcd.clear();
       lcd.setCursor(2, 0);
       lcd.print(":)");
