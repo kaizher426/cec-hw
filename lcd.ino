@@ -31,31 +31,32 @@ void loop() {
     lcd.print(counter);
     delay(150);
     
-    if (counter >= 10){
+    if (counter == 10){
       lcd.clear();
       lcd.setCursor(2, 0);
       lcd.print("What's up");
       delay(1000);
+
     }
-    else if(counter >= 20){
+    else if(counter == 20){
       lcd.clear();
       lcd.setCursor(2, 0);
       lcd.print("Gud");
       delay(1000);
     }
-    else if(counter >= 30){
+    else if(counter == 30){
       lcd.clear();
       lcd.setCursor(2, 0);
       lcd.print("WoW");
       delay(1000);
     }
-    else if(counter >= 40){
+    else if(counter == 40){
       lcd.clear();
       lcd.setCursor(2, 0);
       lcd.print("yo!");
       delay(1000);
     }
-    else if(counter >= 50){
+    else if(counter == 50){
       lcd.clear();
       lcd.setCursor(2, 0);
       lcd.print(":)");
