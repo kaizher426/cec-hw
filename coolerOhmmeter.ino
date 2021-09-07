@@ -1,27 +1,40 @@
 #include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x27, 16, 2); 
-int analogPin=0;
-int x=0;
-float Vout=0;
-float R=10000; //Known Resistor value in Ohm
-float resistor=0;
-float buffer=0;
-void setup()
-{
-lcd.begin(16,2);
-lcd.setCursor(0,0);
-lcd.print("----OHM METER---");
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+int analogPin = A0;
+int raw = 0;
+int Vin = 5;
+float Vout = 0;
+float R2 = 1000;
+float R1 = 0; 
+float buffer = 0;
+
+void setup(){
+  lcd.init();
+  lcd.clear();
+  lcd.backlight(); 
+  lcd.begin(16,2);
+  lcd.setCursor(0,0);
+  lcd.print("----OHM METER---");
+  Serial.begin(9600);
 }
-void loop()
-{
-x=analogRead(analogPin);
-buffer=x*5;
-Vout=(buffer)/1024.0;
-buffer=(5/Vout)-1;
-resistor=R*buffer;
-lcd.setCursor(0,1);
-lcd.print("R = ");
-lcd.print(resistor);
-lcd.print(" Ohm");
-delay(3000);
+
+
+void loop(){
+  raw = analogRead(analogPin);
+  if (raw){
+    buffer = raw * Vin;
+    Vout = (buffer) / 1024.0;
+    buffer = (Vin / Vout) - 1;
+    R1 = R2 * buffer;
+    Serial.print("Vout: ");
+    Serial.println(Vout);
+    Serial.print("R1: ");
+    Serial.println(R1);
+    delay(1000);
+    lcd.setCursor(0,1);
+    lcd.print("R1 = ");
+    lcd.print(R1);
+    delay(3000);
+  }
 }
