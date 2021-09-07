@@ -1,12 +1,12 @@
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-int analogPin = A0;
+int analogPin = 0;
 int raw = 0;
 int Vin = 5;
 float Vout = 0;
 float R2 = 1000;
-float R1 = 0; 
+float R1 = 0;
 float buffer = 0;
 
 void setup(){
