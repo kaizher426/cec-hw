@@ -1,6 +1,5 @@
 import processing.serial.*;
 PImage img;
-PImage img2;
 Serial myPort;  // Create object from Serial class
 
 String val;     // Data received from the serial port
