@@ -39,7 +39,7 @@ void loop() {
       digitalWrite(PIEZO_PIN,HIGH);
       delay(100);
       }
-   else(DHT.humidity + 1){
+   else if(DHT.humidity + 1){
       lcd.setCursor(0, 1);
       lcd.print("HIGH HUMIDITY");
       delay(1000);
