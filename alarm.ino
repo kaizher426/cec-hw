@@ -20,6 +20,7 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(PIEZO_PIN, LOW);
   int chk = DHT.read11(DHT11_PIN);
   lcd.clear();
   lcd.setCursor(0, 0);
