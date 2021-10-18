@@ -23,11 +23,11 @@ void loop() {
       lcd.setCursor(0, 0);
       lcd.print("RED");
   } 
-  if else (val == "GREEN"){
+  else if(val == "GREEN"){
       lcd.setCursor(0, 0);
       lcd.print("GREEN");
   }
-  if else(val == "BLUE"){
+  else if(val == "BLUE"){
       lcd.setCursor(0, 0);
       lcd.print("BLUE");    
   }
