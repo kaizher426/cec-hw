@@ -1,18 +1,14 @@
-// defining the pins
-const int trigPin = 11;
-const int echoPin = 10;
+#include <dht.h>
 
-// defining variables
-long duration;
-int distance;
+dht DHT;
 
-void setup(){
-  pinMode(trigPin, OUTPUT);
-  // Sets the trigPin as an Output
-  pinMode(echoPin, INPUT); 
-  // Starts the serial communication
-  Serial.begin(9600);   
+#define DHT11_PIN 7
+
+void setup() {
+  Serial.begin(9600);
+
 }
+
 
 void loop(){
   digitalWrite(trigPin, LOW);
@@ -26,4 +22,21 @@ void loop(){
 
   Serial.print("Distance: ");
   Serial.println(distance);
+}
+
+void loop() {
+  int chk = DHT.read11(DHT11_PIN);
+  Serial.println(DHT.temperature);
+  Serial.print("Humidity: ");
+  Serial.println(DHT.humidity);
+  delay(1000);
+
+  if(DHT.temperature +  1){
+      Serial.print("HIGH TEMP")
+      delay(100);
+      }
+   else if(DHT.humidity + 1){
+      Serial.print("HIGH HUMIDITY");
+      delay(100);     
+   }
 }
