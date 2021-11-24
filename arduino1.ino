@@ -11,18 +11,25 @@ void setup() {
 
 void loop() {
   int chk = DHT.read11(DHT11_PIN);
-  Serial.print("Temperature: ")
-  Serial.println(DHT.temperature);
-  Serial.print("Humidity: ");
-  Serial.println(DHT.humidity);
+  StatueTemp = "Normal";
+  StatueHumd = "Normal";
+  
+  if (DHT.humidity >=75){
+    StatueHumd = "HIGH HUMIDITY";
+  }
+  else if(DHT.temperature >= 30){
+    StatueTemp = "HIGH TEMPERATURE";
+  }
+  
+  if (DHT.humidity <= 20){
+    StatueHumd = "LOWHUMIDITY";
+  }
+  else if(DHT.temperature <= 20){
+    StatueTemp = "LOW TEMPERATURE";
+  }
+  
+  String p1 = ";";
+  Serial.println(DHT.temperature + p1 + DHT.humidity + p1 + StatueTemp + StatueHumd);
   delay(1000);
-
-  if(DHT.temperature +  1){
-      Serial.print("HIGH TEMP")
-      delay(100);
-      }
-   else if(DHT.humidity + 1){
-      Serial.print("HIGH HUMIDITY");
-      delay(100);     
-   }
+  
 }
