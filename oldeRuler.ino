@@ -12,6 +12,7 @@ Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 int trigPin = 9;    // TRIG pin
 int echoPin = 10;    // ECHO pin
 float duration_us, distance_cm;
+float value;
 
 void setup() {
 
@@ -37,16 +38,19 @@ void loop() {
   // measure duration of pulse from ECHO pin
   duration_us = pulseIn(echoPin, HIGH);
 
+
+  // calculate the distance
+  distance_cm = 0.017 * duration_us;
+  oled.clearDisplay(); // clear display
+  oled.setTextSize(2);          // text size
+  oled.setTextColor(WHITE);
+  oled.setCursor(0, 0);       // position to display
+  oled.println("Distance:");// text color
   if (buttonState = HIGH){
-    // calculate the distance
-    distance_cm = 0.017 * duration_us;
-    oled.clearDisplay(); // clear display
-    oled.setTextSize(2);          // text size
-    oled.setTextColor(WHITE);
-    oled.setCursor(0, 0);       // position to display
-    oled.println("Distance:");// text color
-    oled.setCursor(0, 30);       // position to display
-    oled.println(distance_cm); // text to display
-    oled.display();
-    }
+    value = distance_cm
+  }
+  oled.setCursor(0, 30);       // position to display
+  oled.println(value); // text to display
+  oled.display();
+
   }
