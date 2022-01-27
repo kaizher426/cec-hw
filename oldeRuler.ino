@@ -42,12 +42,12 @@ void loop() {
   // calculate the distance
   distance_cm = 0.017 * duration_us;
   oled.clearDisplay(); // clear display
-  oled.setTextSize(2);          // text size
+  oled.setTextSize(2);  // text size
   oled.setTextColor(WHITE);
   oled.setCursor(0, 0);       // position to display
   oled.println("Distance:");// text color
   if (buttonState = HIGH){
-    value = distance_cm
+    value = distance_cm;
   }
   oled.setCursor(0, 30);       // position to display
   oled.println(value); // text to display
