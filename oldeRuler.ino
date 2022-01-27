@@ -15,6 +15,7 @@ float duration_us, distance_cm;
 float value;
 
 void setup() {
+  Serial.begin(9600);
   // initialize OLED display with address 0x3C for 128x64
   if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
@@ -47,8 +48,9 @@ void loop() {
   oled.println("Distance:");// text color
   oled.setCursor(0, 30);       // position to display
   oled.println(distance_cm); // text to display
-  if(buttonState = HIGH){
+  if(buttonState = LOW){
     value = distance_cm;
+    Serial.println("HELLO");
     }
    oled.setCursor(0,45);
    oled.println(value);
