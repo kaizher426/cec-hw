@@ -15,7 +15,6 @@ float duration_us, distance_cm;
 float value;
 
 void setup() {
-
   // initialize OLED display with address 0x3C for 128x64
   if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
@@ -34,23 +33,26 @@ void loop() {
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  
+
   // measure duration of pulse from ECHO pin
   duration_us = pulseIn(echoPin, HIGH);
 
-
   // calculate the distance
   distance_cm = 0.017 * duration_us;
+
   oled.clearDisplay(); // clear display
-  oled.setTextSize(2);  // text size
+  oled.setTextSize(2);          // text size
   oled.setTextColor(WHITE);
   oled.setCursor(0, 0);       // position to display
   oled.println("Distance:");// text color
-  if (buttonState = HIGH){
-    value = distance_cm;
-  }
   oled.setCursor(0, 30);       // position to display
-  oled.println(value); // text to display
-  oled.display();
+  oled.println(distance_cm); // text to display
+  if(buttonState = HIGH){
+    value = distance_cm;
+    }
+   oled.setCursor(0,45);
+   oled.println(value);
+   oled.display();
 
+  
   }
